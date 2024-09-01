@@ -1,0 +1,816 @@
+Script started on 2024-09-01 20:02:35+09:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+[?2004h]0;han-go-won@han-go-won-VMware-Virtual-Platform: ~/dreamhack/dreamhack/study/Library[01;32mhan-go-won@han-go-won-VMware-Virtual-Platform[00m:[01;34m~/dreamhack/dreamhack/study/Library[00m$ gdb ./hot[K[K[Kgor[Kt
+[?2004l[35;1mGNU gdb (Ubuntu 15.0.50.20240403-0ubuntu1) 15.0.50.20240403-git[m
+Copyright (C) 2024 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <[32mhttp://gnu.org/licenses/gpl.html[m>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+[32m<https://www.gnu.org/software/gdb/bugs/>[m.
+Find the GDB manual and other documentation resources online at:
+    <[32mhttp://www.gnu.org/software/gdb/documentation/[m>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+[31m[1mpwndbg: [0m[31m[0m[91mloaded 163 pwndbg commands and 46 shell commands. Type [35mpwndbg [--shell | --all] [filter][0m[91m for a list.[0m
+[31m[1mpwndbg: [0m[31m[0m[91mcreated [35m$rebase[0m[91m, [35m$base[0m[91m, [35m$bn_sym[0m[91m, [35m$bn_var[0m[91m, [35m$bn_eval[0m[91m, [35m$ida[0m[91m GDB functions (can be used with print/break)[0m
+Reading symbols from [32m./got[m...
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <[32mhttps://debuginfod.ubuntu.com[m>
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+(No debugging symbols found in [32m./got[m)
+[31m[1m------- tip of the day[0m[31m[0m[91m (disable with [35mset show-tips off[0m[91m)[0m[31m[1m -------[0m[31m[0m
+If you want Pwndbg to clear screen on each command (but still save previous output in history) use [33mset context-clear-screen on[0m
+[?2004h[31m[1mpwndbg> [0m[31m[0mentry
+[?2004lTemporary breakpoint 1 at [34m0x401050[m
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
+
+Temporary breakpoint 1, [34m0x0000000000401050[m in [33m_start[m ()
+LEGEND: [33mSTACK[0m | [34mHEAP[0m | [31mCODE[0m | [35mDATA[0m | [4m[31mWX[0m[4m[0m | [0mRODATA[0m
+[34m─────────────[ REGISTERS / show-flags off / show-compact-regs off ]─────────────[0m
+ [1mRAX [0m 0x38
+ [1mRBX [0m 0
+ [1mRCX [0m [33m0x7fffffffde28[0m[0m —▸ [0m[33m0x7fffffffe192[0m[0m ◂— [0m'SHELL=/bin/bash'
+ [1mRDX [0m [31m0x7ffff7fca380 (_dl_fini)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mRDI [0m [35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+ [1mRSI [0m [35m0x7ffff7ffe8b8[0m[0m ◂— [0m0
+ [1mR8  [0m [33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mR9  [0m [0m0x7ffff7ffb440 (tunable_list)[0m[0m ◂— [0m'glibc.malloc.mxfast'
+ [1mR10 [0m [33m0x7fffffffda10[0m[0m ◂— [0m0x800000
+ [1mR11 [0m 0x203
+ [1mR12 [0m [31m0x401050 (_start)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR13 [0m [33m0x7fffffffde10[0m[0m ◂— [0m1
+ [1mR14 [0m 0
+ [1mR15 [0m 0
+ [1mRBP [0m 0
+ [1mRSP [0m [33m0x7fffffffde10[0m[0m ◂— [0m1
+ [1mRIP [0m [31m0x401050 (_start)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[34m──────────────────────[ DISASM / x86-64 / set emulate on ]──────────────────────[0m
+ ► [1m[32m0x401050[0m[1m[0m [1m[32m<_start>    [0m[1m[0m   [1m[32m[38;5;148mendbr64[39m[38;5;15m [39m[0m[1m[0m
+   [0m0x401054[0m [0m<_start+4>  [0m   [38;5;148mxor[39m[38;5;15m    [39m[38;5;81mebp[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mebp[39m                    [1mEBP[0m => 0
+   [0m0x401056[0m [0m<_start+6>  [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mr9[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrdx[39m                     [31m[1mR9[0m[31m[0m => [31m0x7ffff7fca380 (_dl_fini)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+   [0m0x401059[0m [0m<_start+9>  [0m   [38;5;148mpop[39m[38;5;15m    [39m[38;5;81mrsi[39m                         [31m[1mRSI[0m[31m[0m => [0m1[0m
+   [0m0x40105a[0m [0m<_start+10> [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mrdx[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrsp[39m                    [31m[1mRDX[0m[31m[0m => [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library...'
+   [0m0x40105d[0m [0m<_start+13> [0m   [38;5;148mand[39m[38;5;15m    [39m[38;5;81mrsp[39m[38;5;15m,[39m[38;5;15m [39m[38;5;141m0xfffffffffffffff0[39m     [31m[1mRSP[0m[31m[0m => [33m0x7fffffffde10[0m
+   [0m0x401061[0m [0m<_start+17> [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mrax[39m
+   [0m0x401062[0m [0m<_start+18> [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mrsp[39m
+   [0m0x401063[0m [0m<_start+19> [0m   [38;5;148mxor[39m[38;5;15m    [39m[38;5;81mr8d[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mr8d[39m                    [31m[1mR8D[0m[31m[0m => 0
+   [0m0x401066[0m [0m<_start+22> [0m   [38;5;148mxor[39m[38;5;15m    [39m[38;5;81mecx[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mecx[39m                    [31m[1mECX[0m[31m[0m => 0
+   [0m0x401068[0m [0m<_start+24> [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mrdi[39m[38;5;15m,[39m[38;5;15m [39m[38;5;141m[31mmain[0m[39m                   [31m[1mRDI[0m[31m[0m => [31m0x401136 (main)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[34m───────────────────────────────────[ STACK ]────────────────────────────────────[0m
+[0m00[0m[0m:[0m[0m0000[0m[0m│[0m[0m[0m [1mr13 rsp[0m [33m0x7fffffffde10[0m[0m ◂— [0m1
+[0m01[0m[0m:[0m[0m0008[0m[0m│[0m[0m[0m [1m       [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[0m02[0m[0m:[0m[0m0010[0m[0m│[0m[0m[0m [1m       [0m [33m0x7fffffffde20[0m[0m ◂— [0m0
+[0m03[0m[0m:[0m[0m0018[0m[0m│[0m[0m[0m [1mrcx    [0m [33m0x7fffffffde28[0m[0m —▸ [0m[33m0x7fffffffe192[0m[0m ◂— [0m'SHELL=/bin/bash'
+[0m04[0m[0m:[0m[0m0020[0m[0m│[0m[0m[0m [1m       [0m [33m0x7fffffffde30[0m[0m —▸ [0m[33m0x7fffffffe1a2[0m[0m ◂— [0m'SESSION_MANAGER=local/han-go-won-VMware-Virtual-Platform:@/tmp/.ICE-unix/2547,unix/han-go-won-VMware-Virtual-Platform:/tmp/.ICE-unix/2547'
+[0m05[0m[0m:[0m[0m0028[0m[0m│[0m[0m[0m [1m       [0m [33m0x7fffffffde38[0m[0m —▸ [0m[33m0x7fffffffe22c[0m[0m ◂— [0m'QT_ACCESSIBILITY=1'
+[0m06[0m[0m:[0m[0m0030[0m[0m│[0m[0m[0m [1m       [0m [33m0x7fffffffde40[0m[0m —▸ [0m[33m0x7fffffffe23f[0m[0m ◂— [0m'COLORTERM=truecolor'
+[0m07[0m[0m:[0m[0m0038[0m[0m│[0m[0m[0m [1m       [0m [33m0x7fffffffde48[0m[0m —▸ [0m[33m0x7fffffffe253[0m[0m ◂— [0m'XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg'
+[34m─────────────────────────────────[ BACKTRACE ]──────────────────────────────────[0m
+ ► 0         0x401050 _start
+[34m────────────────────────────────────────────────────────────────────────────────[0m
+[?2004h[32m[1mpwndbg> [0m[32m[0mgot
+[?2004lFiltering out read-only entries (display them with -r or --show-readonly)
+
+State of the GOT of [35m/home/han-go-won/dreamhack/dreamhack/study/Library/got[0m:
+GOT protection: [33mPartial RELRO[0m | Found [33m1[0m GOT entries passing the filter
+[[35m0x404000[0m] [33mputs@GLIBC_2.2.5[0m -> [31m0x401030[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[?2004h[32m[1mpwndbg> [0m[32m[0mb *main+18
+[?2004lBreakpoint 2 at [34m0x401148[m
+[?2004h[32m[1mpwndbg> [0m[32m[0mc
+[?2004lContinuing.
+
+Breakpoint 2, [34m0x0000000000401148[m in [33mmain[m ()
+[?2004hLEGEND: [33mSTACK[0m | [34mHEAP[0m | [31mCODE[0m | [35mDATA[0m | [4m[31mWX[0m[4m[0m | [0mRODATA[0m
+[34m─────────────[ REGISTERS / show-flags off / show-compact-regs off ]─────────────[0m
+[31m*[0m[31m[1mRAX [0m[31m[0m [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+[31m*[0m[31m[1mRBX [0m[31m[0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[31m*[0m[31m[1mRCX [0m[31m[0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[31m*[0m[31m[1mRDX [0m[31m[0m [33m0x7fffffffde28[0m[0m —▸ [0m[33m0x7fffffffe192[0m[0m ◂— [0m'SHELL=/bin/bash'
+[31m*[0m[31m[1mRDI [0m[31m[0m [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+[31m*[0m[31m[1mRSI [0m[31m[0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[31m*[0m[31m[1mR8  [0m[31m[0m 0
+[31m*[0m[31m[1mR9  [0m[31m[0m [31m0x7ffff7fca380 (_dl_fini)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR10 [0m [33m0x7fffffffda10[0m[0m ◂— [0m0x800000
+ [1mR11 [0m 0x203
+[31m*[0m[31m[1mR12 [0m[31m[0m 1
+[31m*[0m[31m[1mR13 [0m[31m[0m 0
+[31m*[0m[31m[1mR14 [0m[31m[0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[31m*[0m[31m[1mR15 [0m[31m[0m [35m0x7ffff7ffd000 (_rtld_global)[0m[0m —▸ [0m[35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+[31m*[0m[31m[1mRBP [0m[31m[0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[31m*[0m[31m[1mRSP [0m[31m[0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[31m*[0m[31m[1mRIP [0m[31m[0m [31m0x401148 (main+18)[0m[0m ◂— [0m[38;5;148mcall[39m[38;5;15m [39m[38;5;141m0x401040[39m
+[34m──────────────────────[ DISASM / x86-64 / set emulate on ]──────────────────────[0m
+ ► [1m[32m0x401148[0m[1m[0m [1m[32m<main+18> [0m[1m[0m   [1m[32m[38;5;148m[1mcall[0m[39m[38;5;15m   [39m[38;5;141m[31mputs@plt[0m[1m[32m[39m[0m[1m[0m                    <[31mputs@plt[0m>
+        [1ms[0m: [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+ 
+   [0m0x40114d[0m [0m<main+23> [0m   [38;5;148mlea[39m[38;5;15m    [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0xecd[39m[38;5;15m][39m     [31m[1mRAX[0m[31m[0m => [0m0x402021[0m[0m ◂— [0m'Get address from GOT'
+   [0m0x401154[0m [0m<main+30> [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mrdi[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrax[39m
+   [0m0x401157[0m [0m<main+33> [0m   [38;5;148m[1mcall[0m[39m[38;5;15m   [39m[38;5;141m[31mputs@plt[0m[39m                    <[31mputs@plt[0m>
+ 
+   [0m0x40115c[0m [0m<main+38> [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81meax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;141m0[39m                 [31m[1mEAX[0m[31m[0m => 0
+   [0m0x401161[0m [0m<main+43> [0m   [38;5;148mpop[39m[38;5;15m    [39m[38;5;81mrbp[39m
+   [0m0x401162[0m [0m<main+44> [0m   [38;5;148m[1mret[0m[39m[38;5;15m    [39m
+ 
+   [0m0x401163[0m [0m          [0m   [38;5;148madd[39m[38;5;15m    [39m[38;5;81mbl[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mdh[39m
+[34m───────────────────────────────────[ STACK ]────────────────────────────────────[0m
+[0m00[0m[0m:[0m[0m0000[0m[0m│[0m[0m[0m [1mrbp rsp[0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[0m01[0m[0m:[0m[0m0008[0m[0m│[0m[0m[0m+008     [33m0x7fffffffdcf8[0m[0m —▸ [0m[31m0x7ffff7c2a1ca (__libc_start_call_main+122)[0m[0m ◂— [0m[38;5;148mmov[39m[38;5;15m [39m[38;5;81medi[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81meax[39m
+[0m02[0m[0m:[0m[0m0010[0m[0m│[0m[0m[0m+010     [33m0x7fffffffdd00[0m[0m —▸ [0m[33m0x7fffffffdd40[0m[0m —▸ [0m[0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m03[0m[0m:[0m[0m0018[0m[0m│[0m[0m[0m+018     [33m0x7fffffffdd08[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[0m04[0m[0m:[0m[0m0020[0m[0m│[0m[0m[0m+020     [33m0x7fffffffdd10[0m[0m ◂— [0m0x100400040 /* '@' */
+[0m05[0m[0m:[0m[0m0028[0m[0m│[0m[0m[0m+028     [33m0x7fffffffdd18[0m[0m —▸ [0m[31m0x401136 (main)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m06[0m[0m:[0m[0m0030[0m[0m│[0m[0m[0m+030     [33m0x7fffffffdd20[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[0m07[0m[0m:[0m[0m0038[0m[0m│[0m[0m[0m+038     [33m0x7fffffffdd28[0m[0m ◂— [0m0xb4b1f54b0e944893
+[34m─────────────────────────────────[ BACKTRACE ]──────────────────────────────────[0m
+ ► 0         0x401148 main+18
+   1   0x7ffff7c2a1ca __libc_start_call_main+122
+   2   0x7ffff7c2a28b __libc_start_main+139
+   3         0x401075 _start+37
+[34m────────────────────────────────────────────────────────────────────────────────[0m
+[?2004l[?2004h[32m[1mpwndbg> [0m[32m[0msi
+[?2004l[34m0x0000000000401040[m in [33mputs@plt[m ()
+[?2004hLEGEND: [33mSTACK[0m | [34mHEAP[0m | [31mCODE[0m | [35mDATA[0m | [4m[31mWX[0m[4m[0m | [0mRODATA[0m
+[34m─────────────[ REGISTERS / show-flags off / show-compact-regs off ]─────────────[0m
+ [1mRAX [0m [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+ [1mRBX [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mRCX [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mRDX [0m [33m0x7fffffffde28[0m[0m —▸ [0m[33m0x7fffffffe192[0m[0m ◂— [0m'SHELL=/bin/bash'
+ [1mRDI [0m [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+ [1mRSI [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mR8  [0m 0
+ [1mR9  [0m [31m0x7ffff7fca380 (_dl_fini)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR10 [0m [33m0x7fffffffda10[0m[0m ◂— [0m0x800000
+ [1mR11 [0m 0x203
+ [1mR12 [0m 1
+ [1mR13 [0m 0
+ [1mR14 [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR15 [0m [35m0x7ffff7ffd000 (_rtld_global)[0m[0m —▸ [0m[35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+ [1mRBP [0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[31m*[0m[31m[1mRSP [0m[31m[0m [33m0x7fffffffdce8[0m[0m —▸ [0m[31m0x40114d (main+23)[0m[0m ◂— [0m[38;5;148mlea[39m[38;5;15m [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0xecd[39m[38;5;15m][39m
+[31m*[0m[31m[1mRIP [0m[31m[0m [31m0x401040 (puts@plt)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[34m──────────────────────[ DISASM / x86-64 / set emulate on ]──────────────────────[0m
+ ► [1m[32m0x401040      [0m[1m[0m [1m[32m<puts@plt>                     [0m[1m[0m   [1m[32m[38;5;148mendbr64[39m[38;5;15m [39m[0m[1m[0m
+   [0m0x401044      [0m [0m<puts@plt+4>                   [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fb6[39m[38;5;15m][39m    <[31m0x401030[0m>
+[0m    ↓[0m
+   [0m0x401030      [0m [0m                               [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+   [0m0x401034      [0m [0m                               [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;141m0[39m
+   [0m0x401039      [0m [0m                               [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;141m0x401020[39m                    <[31m0x401020[0m>
+[0m    ↓[0m
+   [0m0x401020      [0m [0m                               [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fca[39m[38;5;15m][39m
+   [0m0x401026      [0m [0m                               [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fcc[39m[38;5;15m][39m    <[31m_dl_runtime_resolve_xsavec[0m>
+[0m    ↓[0m
+   [0m0x7ffff7fda2f0[0m [0m<_dl_runtime_resolve_xsavec>   [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+   [0m0x7ffff7fda2f4[0m [0m<_dl_runtime_resolve_xsavec+4> [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mrbx[39m
+   [0m0x7ffff7fda2f5[0m [0m<_dl_runtime_resolve_xsavec+5> [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mrbx[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrsp[39m                    [31m[1mRBX[0m[31m[0m => [33m0x7fffffffdcd0[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m[0m...[0m
+   [0m0x7ffff7fda2f8[0m [0m<_dl_runtime_resolve_xsavec+8> [0m   [38;5;148mand[39m[38;5;15m    [39m[38;5;81mrsp[39m[38;5;15m,[39m[38;5;15m [39m[38;5;141m0xffffffffffffffc0[39m     [31m[1mRSP[0m[31m[0m => [33m0x7fffffffdcc0[0m
+[34m───────────────────────────────────[ STACK ]────────────────────────────────────[0m
+[0m00[0m[0m:[0m[0m0000[0m[0m│[0m[0m[0m [1mrsp[0m [33m0x7fffffffdce8[0m[0m —▸ [0m[31m0x40114d (main+23)[0m[0m ◂— [0m[38;5;148mlea[39m[38;5;15m [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0xecd[39m[38;5;15m][39m
+[0m01[0m[0m:[0m[0m0008[0m[0m│[0m[0m[0m [1mrbp[0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[0m02[0m[0m:[0m[0m0010[0m[0m│[0m[0m[0m+008 [33m0x7fffffffdcf8[0m[0m —▸ [0m[31m0x7ffff7c2a1ca (__libc_start_call_main+122)[0m[0m ◂— [0m[38;5;148mmov[39m[38;5;15m [39m[38;5;81medi[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81meax[39m
+[0m03[0m[0m:[0m[0m0018[0m[0m│[0m[0m[0m+010 [33m0x7fffffffdd00[0m[0m —▸ [0m[33m0x7fffffffdd40[0m[0m —▸ [0m[0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m04[0m[0m:[0m[0m0020[0m[0m│[0m[0m[0m+018 [33m0x7fffffffdd08[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[0m05[0m[0m:[0m[0m0028[0m[0m│[0m[0m[0m+020 [33m0x7fffffffdd10[0m[0m ◂— [0m0x100400040 /* '@' */
+[0m06[0m[0m:[0m[0m0030[0m[0m│[0m[0m[0m+028 [33m0x7fffffffdd18[0m[0m —▸ [0m[31m0x401136 (main)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m07[0m[0m:[0m[0m0038[0m[0m│[0m[0m[0m+030 [33m0x7fffffffdd20[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[34m─────────────────────────────────[ BACKTRACE ]──────────────────────────────────[0m
+ ► 0         0x401040 puts@plt
+   1         0x40114d main+23
+   2   0x7ffff7c2a1ca __libc_start_call_main+122
+   3   0x7ffff7c2a28b __libc_start_main+139
+   4         0x401075 _start+37
+[34m────────────────────────────────────────────────────────────────────────────────[0m
+[?2004l[?2004h[32m[1mpwndbg> [0m[32m[0mni
+[?2004l[34m0x0000000000401044[m in [33mputs@plt[m ()
+[?2004hLEGEND: [33mSTACK[0m | [34mHEAP[0m | [31mCODE[0m | [35mDATA[0m | [4m[31mWX[0m[4m[0m | [0mRODATA[0m
+[34m─────────────────────────────────[ REGISTERS / show-flags off / show-compact-regs off ]─────────────────────────────────[0m
+ [1mRAX [0m [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+ [1mRBX [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mRCX [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mRDX [0m [33m0x7fffffffde28[0m[0m —▸ [0m[33m0x7fffffffe192[0m[0m ◂— [0m'SHELL=/bin/bash'
+ [1mRDI [0m [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+ [1mRSI [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mR8  [0m 0
+ [1mR9  [0m [31m0x7ffff7fca380 (_dl_fini)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR10 [0m [33m0x7fffffffda10[0m[0m ◂— [0m0x800000
+ [1mR11 [0m 0x203
+ [1mR12 [0m 1
+ [1mR13 [0m 0
+ [1mR14 [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR15 [0m [35m0x7ffff7ffd000 (_rtld_global)[0m[0m —▸ [0m[35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+ [1mRBP [0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+ [1mRSP [0m [33m0x7fffffffdce8[0m[0m —▸ [0m[31m0x40114d (main+23)[0m[0m ◂— [0m[38;5;148mlea[39m[38;5;15m [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0xecd[39m[38;5;15m][39m
+[31m*[0m[31m[1mRIP [0m[31m[0m [31m0x401044 (puts@plt+4)[0m[0m ◂— [0m[38;5;148mjmp[39m[38;5;15m [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fb6[39m[38;5;15m][39m
+[34m──────────────────────────────────────────[ DISASM / x86-64 / set emulate on ]──────────────────────────────────────────[0m
+   [0m0x401040      [0m [0m<puts@plt>                     [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+ ► [1m[32m0x401044      [0m[1m[0m [1m[32m<puts@plt+4>                   [0m[1m[0m   [1m[32m[38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fb6[39m[38;5;15m][39m[0m[1m[0m    <[31m0x401030[0m>
+[0m    ↓[0m
+   [0m0x401030      [0m [0m                               [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+   [0m0x401034      [0m [0m                               [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;141m0[39m
+   [0m0x401039      [0m [0m                               [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;141m0x401020[39m                    <[31m0x401020[0m>
+[0m    ↓[0m
+   [0m0x401020      [0m [0m                               [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fca[39m[38;5;15m][39m
+   [0m0x401026      [0m [0m                               [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fcc[39m[38;5;15m][39m    <[31m_dl_runtime_resolve_xsavec[0m>
+[0m    ↓[0m
+   [0m0x7ffff7fda2f0[0m [0m<_dl_runtime_resolve_xsavec>   [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+   [0m0x7ffff7fda2f4[0m [0m<_dl_runtime_resolve_xsavec+4> [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mrbx[39m
+   [0m0x7ffff7fda2f5[0m [0m<_dl_runtime_resolve_xsavec+5> [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mrbx[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrsp[39m                    [31m[1mRBX[0m[31m[0m => [33m0x7fffffffdcd0[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m[0m...[0m
+   [0m0x7ffff7fda2f8[0m [0m<_dl_runtime_resolve_xsavec+8> [0m   [38;5;148mand[39m[38;5;15m    [39m[38;5;81mrsp[39m[38;5;15m,[39m[38;5;15m [39m[38;5;141m0xffffffffffffffc0[39m     [31m[1mRSP[0m[31m[0m => [33m0x7fffffffdcc0[0m
+[34m───────────────────────────────────────────────────────[ STACK ]────────────────────────────────────────────────────────[0m
+[0m00[0m[0m:[0m[0m0000[0m[0m│[0m[0m[0m [1mrsp[0m [33m0x7fffffffdce8[0m[0m —▸ [0m[31m0x40114d (main+23)[0m[0m ◂— [0m[38;5;148mlea[39m[38;5;15m [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0xecd[39m[38;5;15m][39m
+[0m01[0m[0m:[0m[0m0008[0m[0m│[0m[0m[0m [1mrbp[0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[0m02[0m[0m:[0m[0m0010[0m[0m│[0m[0m[0m+008 [33m0x7fffffffdcf8[0m[0m —▸ [0m[31m0x7ffff7c2a1ca (__libc_start_call_main+122)[0m[0m ◂— [0m[38;5;148mmov[39m[38;5;15m [39m[38;5;81medi[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81meax[39m
+[0m03[0m[0m:[0m[0m0018[0m[0m│[0m[0m[0m+010 [33m0x7fffffffdd00[0m[0m —▸ [0m[33m0x7fffffffdd40[0m[0m —▸ [0m[0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m04[0m[0m:[0m[0m0020[0m[0m│[0m[0m[0m+018 [33m0x7fffffffdd08[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[0m05[0m[0m:[0m[0m0028[0m[0m│[0m[0m[0m+020 [33m0x7fffffffdd10[0m[0m ◂— [0m0x100400040 /* '@' */
+[0m06[0m[0m:[0m[0m0030[0m[0m│[0m[0m[0m+028 [33m0x7fffffffdd18[0m[0m —▸ [0m[31m0x401136 (main)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m07[0m[0m:[0m[0m0038[0m[0m│[0m[0m[0m+030 [33m0x7fffffffdd20[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[34m─────────────────────────────────────────────────────[ BACKTRACE ]──────────────────────────────────────────────────────[0m
+ ► 0         0x401044 puts@plt+4
+   1         0x40114d main+23
+   2   0x7ffff7c2a1ca __libc_start_call_main+122
+   3   0x7ffff7c2a28b __libc_start_main+139
+   4         0x401075 _start+37
+[34m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[?2004l[?2004h[32m[1mpwndbg> [0m[32m[0mni
+[?2004l[34m0x0000000000401030[m in [33m??[m ()
+[?2004hLEGEND: [33mSTACK[0m | [34mHEAP[0m | [31mCODE[0m | [35mDATA[0m | [4m[31mWX[0m[4m[0m | [0mRODATA[0m
+[34m─────────────────────────────────[ REGISTERS / show-flags off / show-compact-regs off ]─────────────────────────────────[0m
+ [1mRAX [0m [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+ [1mRBX [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mRCX [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mRDX [0m [33m0x7fffffffde28[0m[0m —▸ [0m[33m0x7fffffffe192[0m[0m ◂— [0m'SHELL=/bin/bash'
+ [1mRDI [0m [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+ [1mRSI [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mR8  [0m 0
+ [1mR9  [0m [31m0x7ffff7fca380 (_dl_fini)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR10 [0m [33m0x7fffffffda10[0m[0m ◂— [0m0x800000
+ [1mR11 [0m 0x203
+ [1mR12 [0m 1
+ [1mR13 [0m 0
+ [1mR14 [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR15 [0m [35m0x7ffff7ffd000 (_rtld_global)[0m[0m —▸ [0m[35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+ [1mRBP [0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+ [1mRSP [0m [33m0x7fffffffdce8[0m[0m —▸ [0m[31m0x40114d (main+23)[0m[0m ◂— [0m[38;5;148mlea[39m[38;5;15m [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0xecd[39m[38;5;15m][39m
+[31m*[0m[31m[1mRIP [0m[31m[0m [31m0x401030[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[34m──────────────────────────────────────────[ DISASM / x86-64 / set emulate on ]──────────────────────────────────────────[0m
+   [0m0x401040      [0m [0m<puts@plt>                     [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+   [0m0x401044      [0m [0m<puts@plt+4>                   [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fb6[39m[38;5;15m][39m    <[31m0x401030[0m>
+[0m    ↓[0m
+ ► [1m[32m0x401030      [0m[1m[0m [1m[32m                               [0m[1m[0m   [1m[32m[38;5;148mendbr64[39m[38;5;15m [39m[0m[1m[0m
+   [0m0x401034      [0m [0m                               [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;141m0[39m
+   [0m0x401039      [0m [0m                               [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;141m0x401020[39m                    <[31m0x401020[0m>
+[0m    ↓[0m
+   [0m0x401020      [0m [0m                               [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fca[39m[38;5;15m][39m
+   [0m0x401026      [0m [0m                               [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fcc[39m[38;5;15m][39m    <[31m_dl_runtime_resolve_xsavec[0m>
+[0m    ↓[0m
+   [0m0x7ffff7fda2f0[0m [0m<_dl_runtime_resolve_xsavec>   [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+   [0m0x7ffff7fda2f4[0m [0m<_dl_runtime_resolve_xsavec+4> [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mrbx[39m
+   [0m0x7ffff7fda2f5[0m [0m<_dl_runtime_resolve_xsavec+5> [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mrbx[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrsp[39m                    [31m[1mRBX[0m[31m[0m => [33m0x7fffffffdcd0[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m[0m...[0m
+   [0m0x7ffff7fda2f8[0m [0m<_dl_runtime_resolve_xsavec+8> [0m   [38;5;148mand[39m[38;5;15m    [39m[38;5;81mrsp[39m[38;5;15m,[39m[38;5;15m [39m[38;5;141m0xffffffffffffffc0[39m     [31m[1mRSP[0m[31m[0m => [33m0x7fffffffdcc0[0m
+[34m───────────────────────────────────────────────────────[ STACK ]────────────────────────────────────────────────────────[0m
+[0m00[0m[0m:[0m[0m0000[0m[0m│[0m[0m[0m [1mrsp[0m [33m0x7fffffffdce8[0m[0m —▸ [0m[31m0x40114d (main+23)[0m[0m ◂— [0m[38;5;148mlea[39m[38;5;15m [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0xecd[39m[38;5;15m][39m
+[0m01[0m[0m:[0m[0m0008[0m[0m│[0m[0m[0m [1mrbp[0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[0m02[0m[0m:[0m[0m0010[0m[0m│[0m[0m[0m+008 [33m0x7fffffffdcf8[0m[0m —▸ [0m[31m0x7ffff7c2a1ca (__libc_start_call_main+122)[0m[0m ◂— [0m[38;5;148mmov[39m[38;5;15m [39m[38;5;81medi[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81meax[39m
+[0m03[0m[0m:[0m[0m0018[0m[0m│[0m[0m[0m+010 [33m0x7fffffffdd00[0m[0m —▸ [0m[33m0x7fffffffdd40[0m[0m —▸ [0m[0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m04[0m[0m:[0m[0m0020[0m[0m│[0m[0m[0m+018 [33m0x7fffffffdd08[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[0m05[0m[0m:[0m[0m0028[0m[0m│[0m[0m[0m+020 [33m0x7fffffffdd10[0m[0m ◂— [0m0x100400040 /* '@' */
+[0m06[0m[0m:[0m[0m0030[0m[0m│[0m[0m[0m+028 [33m0x7fffffffdd18[0m[0m —▸ [0m[31m0x401136 (main)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m07[0m[0m:[0m[0m0038[0m[0m│[0m[0m[0m+030 [33m0x7fffffffdd20[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[34m─────────────────────────────────────────────────────[ BACKTRACE ]──────────────────────────────────────────────────────[0m
+ ► 0         0x401030
+   1         0x40114d main+23
+   2   0x7ffff7c2a1ca __libc_start_call_main+122
+   3   0x7ffff7c2a28b __libc_start_main+139
+   4         0x401075 _start+37
+[34m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[?2004l[?2004h[32m[1mpwndbg> [0m[32m[0mni
+[?2004l[34m0x0000000000401034[m in [33m??[m ()
+[?2004hLEGEND: [33mSTACK[0m | [34mHEAP[0m | [31mCODE[0m | [35mDATA[0m | [4m[31mWX[0m[4m[0m | [0mRODATA[0m
+[34m─────────────────────────────────[ REGISTERS / show-flags off / show-compact-regs off ]─────────────────────────────────[0m
+ [1mRAX [0m [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+ [1mRBX [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mRCX [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mRDX [0m [33m0x7fffffffde28[0m[0m —▸ [0m[33m0x7fffffffe192[0m[0m ◂— [0m'SHELL=/bin/bash'
+ [1mRDI [0m [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+ [1mRSI [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mR8  [0m 0
+ [1mR9  [0m [31m0x7ffff7fca380 (_dl_fini)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR10 [0m [33m0x7fffffffda10[0m[0m ◂— [0m0x800000
+ [1mR11 [0m 0x203
+ [1mR12 [0m 1
+ [1mR13 [0m 0
+ [1mR14 [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR15 [0m [35m0x7ffff7ffd000 (_rtld_global)[0m[0m —▸ [0m[35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+ [1mRBP [0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+ [1mRSP [0m [33m0x7fffffffdce8[0m[0m —▸ [0m[31m0x40114d (main+23)[0m[0m ◂— [0m[38;5;148mlea[39m[38;5;15m [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0xecd[39m[38;5;15m][39m
+[31m*[0m[31m[1mRIP [0m[31m[0m [31m0x401034[0m[0m ◂— [0m[38;5;148mpush[39m[38;5;15m [39m[38;5;141m0[39m /* 'h' */
+[34m──────────────────────────────────────────[ DISASM / x86-64 / set emulate on ]──────────────────────────────────────────[0m
+   [0m0x401040      [0m [0m<puts@plt>                     [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+   [0m0x401044      [0m [0m<puts@plt+4>                   [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fb6[39m[38;5;15m][39m    <[31m0x401030[0m>
+[0m    ↓[0m
+   [0m0x401030      [0m [0m                               [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+ ► [1m[32m0x401034      [0m[1m[0m [1m[32m                               [0m[1m[0m   [1m[32m[38;5;148mpush[39m[38;5;15m   [39m[38;5;141m0[39m[0m[1m[0m
+   [0m0x401039      [0m [0m                               [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;141m0x401020[39m                    <[31m0x401020[0m>
+[0m    ↓[0m
+   [0m0x401020      [0m [0m                               [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fca[39m[38;5;15m][39m
+   [0m0x401026      [0m [0m                               [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fcc[39m[38;5;15m][39m    <[31m_dl_runtime_resolve_xsavec[0m>
+[0m    ↓[0m
+   [0m0x7ffff7fda2f0[0m [0m<_dl_runtime_resolve_xsavec>   [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+   [0m0x7ffff7fda2f4[0m [0m<_dl_runtime_resolve_xsavec+4> [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mrbx[39m
+   [0m0x7ffff7fda2f5[0m [0m<_dl_runtime_resolve_xsavec+5> [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mrbx[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrsp[39m                    [31m[1mRBX[0m[31m[0m => [33m0x7fffffffdcd0[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m[0m...[0m
+   [0m0x7ffff7fda2f8[0m [0m<_dl_runtime_resolve_xsavec+8> [0m   [38;5;148mand[39m[38;5;15m    [39m[38;5;81mrsp[39m[38;5;15m,[39m[38;5;15m [39m[38;5;141m0xffffffffffffffc0[39m     [31m[1mRSP[0m[31m[0m => [33m0x7fffffffdcc0[0m
+[34m───────────────────────────────────────────────────────[ STACK ]────────────────────────────────────────────────────────[0m
+[0m00[0m[0m:[0m[0m0000[0m[0m│[0m[0m[0m [1mrsp[0m [33m0x7fffffffdce8[0m[0m —▸ [0m[31m0x40114d (main+23)[0m[0m ◂— [0m[38;5;148mlea[39m[38;5;15m [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0xecd[39m[38;5;15m][39m
+[0m01[0m[0m:[0m[0m0008[0m[0m│[0m[0m[0m [1mrbp[0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[0m02[0m[0m:[0m[0m0010[0m[0m│[0m[0m[0m+008 [33m0x7fffffffdcf8[0m[0m —▸ [0m[31m0x7ffff7c2a1ca (__libc_start_call_main+122)[0m[0m ◂— [0m[38;5;148mmov[39m[38;5;15m [39m[38;5;81medi[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81meax[39m
+[0m03[0m[0m:[0m[0m0018[0m[0m│[0m[0m[0m+010 [33m0x7fffffffdd00[0m[0m —▸ [0m[33m0x7fffffffdd40[0m[0m —▸ [0m[0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m04[0m[0m:[0m[0m0020[0m[0m│[0m[0m[0m+018 [33m0x7fffffffdd08[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[0m05[0m[0m:[0m[0m0028[0m[0m│[0m[0m[0m+020 [33m0x7fffffffdd10[0m[0m ◂— [0m0x100400040 /* '@' */
+[0m06[0m[0m:[0m[0m0030[0m[0m│[0m[0m[0m+028 [33m0x7fffffffdd18[0m[0m —▸ [0m[31m0x401136 (main)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m07[0m[0m:[0m[0m0038[0m[0m│[0m[0m[0m+030 [33m0x7fffffffdd20[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[34m─────────────────────────────────────────────────────[ BACKTRACE ]──────────────────────────────────────────────────────[0m
+ ► 0         0x401034
+   1         0x40114d main+23
+   2   0x7ffff7c2a1ca __libc_start_call_main+122
+   3   0x7ffff7c2a28b __libc_start_main+139
+   4         0x401075 _start+37
+[34m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[?2004l[?2004h[32m[1mpwndbg> [0m[32m[0mni
+[?2004l[34m0x0000000000401039[m in [33m??[m ()
+[?2004hLEGEND: [33mSTACK[0m | [34mHEAP[0m | [31mCODE[0m | [35mDATA[0m | [4m[31mWX[0m[4m[0m | [0mRODATA[0m
+[34m─────────────────────────────────[ REGISTERS / show-flags off / show-compact-regs off ]─────────────────────────────────[0m
+ [1mRAX [0m [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+ [1mRBX [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mRCX [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mRDX [0m [33m0x7fffffffde28[0m[0m —▸ [0m[33m0x7fffffffe192[0m[0m ◂— [0m'SHELL=/bin/bash'
+ [1mRDI [0m [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+ [1mRSI [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mR8  [0m 0
+ [1mR9  [0m [31m0x7ffff7fca380 (_dl_fini)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR10 [0m [33m0x7fffffffda10[0m[0m ◂— [0m0x800000
+ [1mR11 [0m 0x203
+ [1mR12 [0m 1
+ [1mR13 [0m 0
+ [1mR14 [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR15 [0m [35m0x7ffff7ffd000 (_rtld_global)[0m[0m —▸ [0m[35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+ [1mRBP [0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[31m*[0m[31m[1mRSP [0m[31m[0m [33m0x7fffffffdce0[0m[0m ◂— [0m0
+[31m*[0m[31m[1mRIP [0m[31m[0m [31m0x401039[0m[0m ◂— [0m[38;5;148mjmp[39m[38;5;15m [39m[38;5;141m0x401020[39m
+[34m──────────────────────────────────────────[ DISASM / x86-64 / set emulate on ]──────────────────────────────────────────[0m
+   [0m0x401040      [0m [0m<puts@plt>                     [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+   [0m0x401044      [0m [0m<puts@plt+4>                   [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fb6[39m[38;5;15m][39m    <[31m0x401030[0m>
+[0m    ↓[0m
+   [0m0x401030      [0m [0m                               [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+   [0m0x401034      [0m [0m                               [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;141m0[39m
+ ► [1m[32m0x401039      [0m[1m[0m [1m[32m                               [0m[1m[0m   [1m[32m[38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;141m0x401020[39m[0m[1m[0m                    <[31m0x401020[0m>
+[0m    ↓[0m
+   [0m0x401020      [0m [0m                               [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fca[39m[38;5;15m][39m
+   [0m0x401026      [0m [0m                               [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fcc[39m[38;5;15m][39m    <[31m_dl_runtime_resolve_xsavec[0m>
+[0m    ↓[0m
+   [0m0x7ffff7fda2f0[0m [0m<_dl_runtime_resolve_xsavec>   [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+   [0m0x7ffff7fda2f4[0m [0m<_dl_runtime_resolve_xsavec+4> [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mrbx[39m
+   [0m0x7ffff7fda2f5[0m [0m<_dl_runtime_resolve_xsavec+5> [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mrbx[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrsp[39m                    [31m[1mRBX[0m[31m[0m => [33m0x7fffffffdcd0[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m[0m...[0m
+   [0m0x7ffff7fda2f8[0m [0m<_dl_runtime_resolve_xsavec+8> [0m   [38;5;148mand[39m[38;5;15m    [39m[38;5;81mrsp[39m[38;5;15m,[39m[38;5;15m [39m[38;5;141m0xffffffffffffffc0[39m     [31m[1mRSP[0m[31m[0m => [33m0x7fffffffdcc0[0m
+[34m───────────────────────────────────────────────────────[ STACK ]────────────────────────────────────────────────────────[0m
+[0m00[0m[0m:[0m[0m0000[0m[0m│[0m[0m[0m [1mrsp[0m [33m0x7fffffffdce0[0m[0m ◂— [0m0
+[0m01[0m[0m:[0m[0m0008[0m[0m│[0m[0m[0m-008 [33m0x7fffffffdce8[0m[0m —▸ [0m[31m0x40114d (main+23)[0m[0m ◂— [0m[38;5;148mlea[39m[38;5;15m [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0xecd[39m[38;5;15m][39m
+[0m02[0m[0m:[0m[0m0010[0m[0m│[0m[0m[0m [1mrbp[0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[0m03[0m[0m:[0m[0m0018[0m[0m│[0m[0m[0m+008 [33m0x7fffffffdcf8[0m[0m —▸ [0m[31m0x7ffff7c2a1ca (__libc_start_call_main+122)[0m[0m ◂— [0m[38;5;148mmov[39m[38;5;15m [39m[38;5;81medi[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81meax[39m
+[0m04[0m[0m:[0m[0m0020[0m[0m│[0m[0m[0m+010 [33m0x7fffffffdd00[0m[0m —▸ [0m[33m0x7fffffffdd40[0m[0m —▸ [0m[0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m05[0m[0m:[0m[0m0028[0m[0m│[0m[0m[0m+018 [33m0x7fffffffdd08[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[0m06[0m[0m:[0m[0m0030[0m[0m│[0m[0m[0m+020 [33m0x7fffffffdd10[0m[0m ◂— [0m0x100400040 /* '@' */
+[0m07[0m[0m:[0m[0m0038[0m[0m│[0m[0m[0m+028 [33m0x7fffffffdd18[0m[0m —▸ [0m[31m0x401136 (main)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[34m─────────────────────────────────────────────────────[ BACKTRACE ]──────────────────────────────────────────────────────[0m
+ ► 0         0x401039
+   1         0x40114d main+23
+   2   0x7ffff7c2a1ca __libc_start_call_main+122
+   3   0x7ffff7c2a28b __libc_start_main+139
+   4         0x401075 _start+37
+[34m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[?2004l[?2004h[32m[1mpwndbg> [0m[32m[0mni
+[?2004l[34m0x0000000000401020[m in [33m??[m ()
+[?2004hLEGEND: [33mSTACK[0m | [34mHEAP[0m | [31mCODE[0m | [35mDATA[0m | [4m[31mWX[0m[4m[0m | [0mRODATA[0m
+[34m─────────────────────────────────[ REGISTERS / show-flags off / show-compact-regs off ]─────────────────────────────────[0m
+ [1mRAX [0m [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+ [1mRBX [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mRCX [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mRDX [0m [33m0x7fffffffde28[0m[0m —▸ [0m[33m0x7fffffffe192[0m[0m ◂— [0m'SHELL=/bin/bash'
+ [1mRDI [0m [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+ [1mRSI [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mR8  [0m 0
+ [1mR9  [0m [31m0x7ffff7fca380 (_dl_fini)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR10 [0m [33m0x7fffffffda10[0m[0m ◂— [0m0x800000
+ [1mR11 [0m 0x203
+ [1mR12 [0m 1
+ [1mR13 [0m 0
+ [1mR14 [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR15 [0m [35m0x7ffff7ffd000 (_rtld_global)[0m[0m —▸ [0m[35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+ [1mRBP [0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+ [1mRSP [0m [33m0x7fffffffdce0[0m[0m ◂— [0m0
+[31m*[0m[31m[1mRIP [0m[31m[0m [31m0x401020[0m[0m ◂— [0m[38;5;148mpush[39m[38;5;15m [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fca[39m[38;5;15m][39m
+[34m──────────────────────────────────────────[ DISASM / x86-64 / set emulate on ]──────────────────────────────────────────[0m
+   [0m0x401040      [0m [0m<puts@plt>                     [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+   [0m0x401044      [0m [0m<puts@plt+4>                   [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fb6[39m[38;5;15m][39m    <[31m0x401030[0m>
+[0m    ↓[0m
+   [0m0x401030      [0m [0m                               [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+   [0m0x401034      [0m [0m                               [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;141m0[39m
+   [0m0x401039      [0m [0m                               [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;141m0x401020[39m                    <[31m0x401020[0m>
+[0m    ↓[0m
+ ► [1m[32m0x401020      [0m[1m[0m [1m[32m                               [0m[1m[0m   [1m[32m[38;5;148mpush[39m[38;5;15m   [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fca[39m[38;5;15m][39m[0m[1m[0m
+   [0m0x401026      [0m [0m                               [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fcc[39m[38;5;15m][39m    <[31m_dl_runtime_resolve_xsavec[0m>
+[0m    ↓[0m
+   [0m0x7ffff7fda2f0[0m [0m<_dl_runtime_resolve_xsavec>   [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+   [0m0x7ffff7fda2f4[0m [0m<_dl_runtime_resolve_xsavec+4> [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mrbx[39m
+   [0m0x7ffff7fda2f5[0m [0m<_dl_runtime_resolve_xsavec+5> [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mrbx[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrsp[39m                    [31m[1mRBX[0m[31m[0m => [33m0x7fffffffdcd0[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m[0m...[0m
+   [0m0x7ffff7fda2f8[0m [0m<_dl_runtime_resolve_xsavec+8> [0m   [38;5;148mand[39m[38;5;15m    [39m[38;5;81mrsp[39m[38;5;15m,[39m[38;5;15m [39m[38;5;141m0xffffffffffffffc0[39m     [31m[1mRSP[0m[31m[0m => [33m0x7fffffffdcc0[0m
+[34m───────────────────────────────────────────────────────[ STACK ]────────────────────────────────────────────────────────[0m
+[0m00[0m[0m:[0m[0m0000[0m[0m│[0m[0m[0m [1mrsp[0m [33m0x7fffffffdce0[0m[0m ◂— [0m0
+[0m01[0m[0m:[0m[0m0008[0m[0m│[0m[0m[0m-008 [33m0x7fffffffdce8[0m[0m —▸ [0m[31m0x40114d (main+23)[0m[0m ◂— [0m[38;5;148mlea[39m[38;5;15m [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0xecd[39m[38;5;15m][39m
+[0m02[0m[0m:[0m[0m0010[0m[0m│[0m[0m[0m [1mrbp[0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[0m03[0m[0m:[0m[0m0018[0m[0m│[0m[0m[0m+008 [33m0x7fffffffdcf8[0m[0m —▸ [0m[31m0x7ffff7c2a1ca (__libc_start_call_main+122)[0m[0m ◂— [0m[38;5;148mmov[39m[38;5;15m [39m[38;5;81medi[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81meax[39m
+[0m04[0m[0m:[0m[0m0020[0m[0m│[0m[0m[0m+010 [33m0x7fffffffdd00[0m[0m —▸ [0m[33m0x7fffffffdd40[0m[0m —▸ [0m[0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m05[0m[0m:[0m[0m0028[0m[0m│[0m[0m[0m+018 [33m0x7fffffffdd08[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[0m06[0m[0m:[0m[0m0030[0m[0m│[0m[0m[0m+020 [33m0x7fffffffdd10[0m[0m ◂— [0m0x100400040 /* '@' */
+[0m07[0m[0m:[0m[0m0038[0m[0m│[0m[0m[0m+028 [33m0x7fffffffdd18[0m[0m —▸ [0m[31m0x401136 (main)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[34m─────────────────────────────────────────────────────[ BACKTRACE ]──────────────────────────────────────────────────────[0m
+ ► 0         0x401020
+   1         0x40114d main+23
+   2   0x7ffff7c2a1ca __libc_start_call_main+122
+   3   0x7ffff7c2a28b __libc_start_main+139
+   4         0x401075 _start+37
+[34m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[?2004l[?2004h[32m[1mpwndbg> [0m[32m[0mni
+[?2004l[34m0x0000000000401026[m in [33m??[m ()
+[?2004hLEGEND: [33mSTACK[0m | [34mHEAP[0m | [31mCODE[0m | [35mDATA[0m | [4m[31mWX[0m[4m[0m | [0mRODATA[0m
+[34m─────────────────────────────────[ REGISTERS / show-flags off / show-compact-regs off ]─────────────────────────────────[0m
+ [1mRAX [0m [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+ [1mRBX [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mRCX [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mRDX [0m [33m0x7fffffffde28[0m[0m —▸ [0m[33m0x7fffffffe192[0m[0m ◂— [0m'SHELL=/bin/bash'
+ [1mRDI [0m [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+ [1mRSI [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mR8  [0m 0
+ [1mR9  [0m [31m0x7ffff7fca380 (_dl_fini)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR10 [0m [33m0x7fffffffda10[0m[0m ◂— [0m0x800000
+ [1mR11 [0m 0x203
+ [1mR12 [0m 1
+ [1mR13 [0m 0
+ [1mR14 [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR15 [0m [35m0x7ffff7ffd000 (_rtld_global)[0m[0m —▸ [0m[35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+ [1mRBP [0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[31m*[0m[31m[1mRSP [0m[31m[0m [33m0x7fffffffdcd8[0m[0m —▸ [0m[35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+[31m*[0m[31m[1mRIP [0m[31m[0m [31m0x401026[0m[0m ◂— [0m[38;5;148mjmp[39m[38;5;15m [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fcc[39m[38;5;15m][39m
+[34m──────────────────────────────────────────[ DISASM / x86-64 / set emulate on ]──────────────────────────────────────────[0m
+   [0m0x401044      [0m [0m<puts@plt+4>                    [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fb6[39m[38;5;15m][39m    <[31m0x401030[0m>
+[0m    ↓[0m
+   [0m0x401030      [0m [0m                                [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+   [0m0x401034      [0m [0m                                [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;141m0[39m
+   [0m0x401039      [0m [0m                                [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;141m0x401020[39m                    <[31m0x401020[0m>
+[0m    ↓[0m
+   [0m0x401020      [0m [0m                                [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fca[39m[38;5;15m][39m
+ ► [1m[32m0x401026      [0m[1m[0m [1m[32m                                [0m[1m[0m   [1m[32m[38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fcc[39m[38;5;15m][39m[0m[1m[0m    <[31m_dl_runtime_resolve_xsavec[0m>
+[0m    ↓[0m
+   [0m0x7ffff7fda2f0[0m [0m<_dl_runtime_resolve_xsavec>    [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+   [0m0x7ffff7fda2f4[0m [0m<_dl_runtime_resolve_xsavec+4>  [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mrbx[39m
+   [0m0x7ffff7fda2f5[0m [0m<_dl_runtime_resolve_xsavec+5>  [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mrbx[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrsp[39m                           [31m[1mRBX[0m[31m[0m => [33m0x7fffffffdcd0[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m[0m...[0m
+   [0m0x7ffff7fda2f8[0m [0m<_dl_runtime_resolve_xsavec+8>  [0m   [38;5;148mand[39m[38;5;15m    [39m[38;5;81mrsp[39m[38;5;15m,[39m[38;5;15m [39m[38;5;141m0xffffffffffffffc0[39m            [31m[1mRSP[0m[31m[0m => [33m0x7fffffffdcc0[0m
+   [0m0x7ffff7fda2fc[0m [0m<_dl_runtime_resolve_xsavec+12> [0m   [38;5;148msub[39m[38;5;15m    [39m[38;5;81mrsp[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2296d[39m[38;5;15m][39m     [31m[1mRSP[0m[31m[0m => [33m0x7fffffffd940[0m (0x7fffffffdcc0 - 0x380)
+[34m───────────────────────────────────────────────────────[ STACK ]────────────────────────────────────────────────────────[0m
+[0m00[0m[0m:[0m[0m0000[0m[0m│[0m[0m[0m [1mrsp[0m [33m0x7fffffffdcd8[0m[0m —▸ [0m[35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+[0m01[0m[0m:[0m[0m0008[0m[0m│[0m[0m[0m-010 [33m0x7fffffffdce0[0m[0m ◂— [0m0
+[0m02[0m[0m:[0m[0m0010[0m[0m│[0m[0m[0m-008 [33m0x7fffffffdce8[0m[0m —▸ [0m[31m0x40114d (main+23)[0m[0m ◂— [0m[38;5;148mlea[39m[38;5;15m [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0xecd[39m[38;5;15m][39m
+[0m03[0m[0m:[0m[0m0018[0m[0m│[0m[0m[0m [1mrbp[0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[0m04[0m[0m:[0m[0m0020[0m[0m│[0m[0m[0m+008 [33m0x7fffffffdcf8[0m[0m —▸ [0m[31m0x7ffff7c2a1ca (__libc_start_call_main+122)[0m[0m ◂— [0m[38;5;148mmov[39m[38;5;15m [39m[38;5;81medi[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81meax[39m
+[0m05[0m[0m:[0m[0m0028[0m[0m│[0m[0m[0m+010 [33m0x7fffffffdd00[0m[0m —▸ [0m[33m0x7fffffffdd40[0m[0m —▸ [0m[0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m06[0m[0m:[0m[0m0030[0m[0m│[0m[0m[0m+018 [33m0x7fffffffdd08[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[0m07[0m[0m:[0m[0m0038[0m[0m│[0m[0m[0m+020 [33m0x7fffffffdd10[0m[0m ◂— [0m0x100400040 /* '@' */
+[34m─────────────────────────────────────────────────────[ BACKTRACE ]──────────────────────────────────────────────────────[0m
+ ► 0         0x401026
+   1         0x40114d main+23
+   2   0x7ffff7c2a1ca __libc_start_call_main+122
+   3   0x7ffff7c2a28b __libc_start_main+139
+   4         0x401075 _start+37
+[34m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[?2004l[?2004h[32m[1mpwndbg> [0m[32m[0mni
+[?2004l[33m_dl_runtime_resolve_xsavec[m () at [32m../sysdeps/x86_64/dl-trampoline.h[m:71
+warning: 71	[32m../sysdeps/x86_64/dl-trampoline.h[m: No such file or directory
+[?2004hLEGEND: [33mSTACK[0m | [34mHEAP[0m | [31mCODE[0m | [35mDATA[0m | [4m[31mWX[0m[4m[0m | [0mRODATA[0m
+[34m─────────────────────────────────[ REGISTERS / show-flags off / show-compact-regs off ]─────────────────────────────────[0m
+ [1mRAX [0m [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+ [1mRBX [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mRCX [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mRDX [0m [33m0x7fffffffde28[0m[0m —▸ [0m[33m0x7fffffffe192[0m[0m ◂— [0m'SHELL=/bin/bash'
+ [1mRDI [0m [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+ [1mRSI [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mR8  [0m 0
+ [1mR9  [0m [31m0x7ffff7fca380 (_dl_fini)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR10 [0m [33m0x7fffffffda10[0m[0m ◂— [0m0x800000
+ [1mR11 [0m 0x203
+ [1mR12 [0m 1
+ [1mR13 [0m 0
+ [1mR14 [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR15 [0m [35m0x7ffff7ffd000 (_rtld_global)[0m[0m —▸ [0m[35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+ [1mRBP [0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+ [1mRSP [0m [33m0x7fffffffdcd8[0m[0m —▸ [0m[35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+[31m*[0m[31m[1mRIP [0m[31m[0m [31m0x7ffff7fda2f0 (_dl_runtime_resolve_xsavec)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[34m──────────────────────────────────────────[ DISASM / x86-64 / set emulate on ]──────────────────────────────────────────[0m
+   [0m0x401030      [0m [0m                                [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+   [0m0x401034      [0m [0m                                [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;141m0[39m
+   [0m0x401039      [0m [0m                                [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;141m0x401020[39m                    <[31m0x401020[0m>
+[0m    ↓[0m
+   [0m0x401020      [0m [0m                                [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fca[39m[38;5;15m][39m
+   [0m0x401026      [0m [0m                                [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fcc[39m[38;5;15m][39m    <[31m_dl_runtime_resolve_xsavec[0m>
+[0m    ↓[0m
+ ► [1m[32m0x7ffff7fda2f0[0m[1m[0m [1m[32m<_dl_runtime_resolve_xsavec>    [0m[1m[0m   [1m[32m[38;5;148mendbr64[39m[38;5;15m [39m[0m[1m[0m
+   [0m0x7ffff7fda2f4[0m [0m<_dl_runtime_resolve_xsavec+4>  [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mrbx[39m
+   [0m0x7ffff7fda2f5[0m [0m<_dl_runtime_resolve_xsavec+5>  [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mrbx[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrsp[39m                           [31m[1mRBX[0m[31m[0m => [33m0x7fffffffdcd0[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m[0m...[0m
+   [0m0x7ffff7fda2f8[0m [0m<_dl_runtime_resolve_xsavec+8>  [0m   [38;5;148mand[39m[38;5;15m    [39m[38;5;81mrsp[39m[38;5;15m,[39m[38;5;15m [39m[38;5;141m0xffffffffffffffc0[39m            [31m[1mRSP[0m[31m[0m => [33m0x7fffffffdcc0[0m
+   [0m0x7ffff7fda2fc[0m [0m<_dl_runtime_resolve_xsavec+12> [0m   [38;5;148msub[39m[38;5;15m    [39m[38;5;81mrsp[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2296d[39m[38;5;15m][39m     [31m[1mRSP[0m[31m[0m => [33m0x7fffffffd940[0m (0x7fffffffdcc0 - 0x380)
+   [0m0x7ffff7fda303[0m [0m<_dl_runtime_resolve_xsavec+19> [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrsp[39m[38;5;15m][39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrax[39m               [[33m0x7fffffffd940[0m] => [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+[34m───────────────────────────────────────────────────────[ STACK ]────────────────────────────────────────────────────────[0m
+[0m00[0m[0m:[0m[0m0000[0m[0m│[0m[0m[0m [1mrsp[0m [33m0x7fffffffdcd8[0m[0m —▸ [0m[35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+[0m01[0m[0m:[0m[0m0008[0m[0m│[0m[0m[0m-010 [33m0x7fffffffdce0[0m[0m ◂— [0m0
+[0m02[0m[0m:[0m[0m0010[0m[0m│[0m[0m[0m-008 [33m0x7fffffffdce8[0m[0m —▸ [0m[31m0x40114d (main+23)[0m[0m ◂— [0m[38;5;148mlea[39m[38;5;15m [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0xecd[39m[38;5;15m][39m
+[0m03[0m[0m:[0m[0m0018[0m[0m│[0m[0m[0m [1mrbp[0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[0m04[0m[0m:[0m[0m0020[0m[0m│[0m[0m[0m+008 [33m0x7fffffffdcf8[0m[0m —▸ [0m[31m0x7ffff7c2a1ca (__libc_start_call_main+122)[0m[0m ◂— [0m[38;5;148mmov[39m[38;5;15m [39m[38;5;81medi[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81meax[39m
+[0m05[0m[0m:[0m[0m0028[0m[0m│[0m[0m[0m+010 [33m0x7fffffffdd00[0m[0m —▸ [0m[33m0x7fffffffdd40[0m[0m —▸ [0m[0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m06[0m[0m:[0m[0m0030[0m[0m│[0m[0m[0m+018 [33m0x7fffffffdd08[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[0m07[0m[0m:[0m[0m0038[0m[0m│[0m[0m[0m+020 [33m0x7fffffffdd10[0m[0m ◂— [0m0x100400040 /* '@' */
+[34m─────────────────────────────────────────────────────[ BACKTRACE ]──────────────────────────────────────────────────────[0m
+ ► 0   0x7ffff7fda2f0 _dl_runtime_resolve_xsavec
+   1         0x40114d main+23
+   2   0x7ffff7c2a1ca __libc_start_call_main+122
+   3   0x7ffff7c2a28b __libc_start_main+139
+   4         0x401075 _start+37
+[34m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[?2004l[?2004h[32m[1mpwndbg> [0m[32m[0mni
+[?2004l76	in [32m../sysdeps/x86_64/dl-trampoline.h[m
+[?2004hLEGEND: [33mSTACK[0m | [34mHEAP[0m | [31mCODE[0m | [35mDATA[0m | [4m[31mWX[0m[4m[0m | [0mRODATA[0m
+[34m─────────────────────────────────[ REGISTERS / show-flags off / show-compact-regs off ]─────────────────────────────────[0m
+ [1mRAX [0m [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+ [1mRBX [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mRCX [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mRDX [0m [33m0x7fffffffde28[0m[0m —▸ [0m[33m0x7fffffffe192[0m[0m ◂— [0m'SHELL=/bin/bash'
+ [1mRDI [0m [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+ [1mRSI [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mR8  [0m 0
+ [1mR9  [0m [31m0x7ffff7fca380 (_dl_fini)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR10 [0m [33m0x7fffffffda10[0m[0m ◂— [0m0x800000
+ [1mR11 [0m 0x203
+ [1mR12 [0m 1
+ [1mR13 [0m 0
+ [1mR14 [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR15 [0m [35m0x7ffff7ffd000 (_rtld_global)[0m[0m —▸ [0m[35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+ [1mRBP [0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+ [1mRSP [0m [33m0x7fffffffdcd8[0m[0m —▸ [0m[35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+[31m*[0m[31m[1mRIP [0m[31m[0m [31m0x7ffff7fda2f4 (_dl_runtime_resolve_xsavec+4)[0m[0m ◂— [0m[38;5;148mpush[39m[38;5;15m [39m[38;5;81mrbx[39m
+[34m──────────────────────────────────────────[ DISASM / x86-64 / set emulate on ]──────────────────────────────────────────[0m
+   [0m0x401034      [0m [0m                                [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;141m0[39m
+   [0m0x401039      [0m [0m                                [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;141m0x401020[39m                    <[31m0x401020[0m>
+[0m    ↓[0m
+   [0m0x401020      [0m [0m                                [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fca[39m[38;5;15m][39m
+   [0m0x401026      [0m [0m                                [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fcc[39m[38;5;15m][39m    <[31m_dl_runtime_resolve_xsavec[0m>
+[0m    ↓[0m
+   [0m0x7ffff7fda2f0[0m [0m<_dl_runtime_resolve_xsavec>    [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+ ► [1m[32m0x7ffff7fda2f4[0m[1m[0m [1m[32m<_dl_runtime_resolve_xsavec+4>  [0m[1m[0m   [1m[32m[38;5;148mpush[39m[38;5;15m   [39m[38;5;81mrbx[39m[0m[1m[0m
+   [0m0x7ffff7fda2f5[0m [0m<_dl_runtime_resolve_xsavec+5>  [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mrbx[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrsp[39m                           [31m[1mRBX[0m[31m[0m => [33m0x7fffffffdcd0[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m[0m...[0m
+   [0m0x7ffff7fda2f8[0m [0m<_dl_runtime_resolve_xsavec+8>  [0m   [38;5;148mand[39m[38;5;15m    [39m[38;5;81mrsp[39m[38;5;15m,[39m[38;5;15m [39m[38;5;141m0xffffffffffffffc0[39m            [31m[1mRSP[0m[31m[0m => [33m0x7fffffffdcc0[0m
+   [0m0x7ffff7fda2fc[0m [0m<_dl_runtime_resolve_xsavec+12> [0m   [38;5;148msub[39m[38;5;15m    [39m[38;5;81mrsp[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2296d[39m[38;5;15m][39m     [31m[1mRSP[0m[31m[0m => [33m0x7fffffffd940[0m (0x7fffffffdcc0 - 0x380)
+   [0m0x7ffff7fda303[0m [0m<_dl_runtime_resolve_xsavec+19> [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrsp[39m[38;5;15m][39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrax[39m               [[33m0x7fffffffd940[0m] => [0m0x402004[0m[0m ◂— [0m"Resolving address of 'puts'."
+   [0m0x7ffff7fda307[0m [0m<_dl_runtime_resolve_xsavec+23> [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrsp[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m8[39m[38;5;15m][39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrcx[39m           [[33m0x7fffffffd948[0m] => [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[34m───────────────────────────────────────────────────────[ STACK ]────────────────────────────────────────────────────────[0m
+[0m00[0m[0m:[0m[0m0000[0m[0m│[0m[0m[0m [1mrsp[0m [33m0x7fffffffdcd8[0m[0m —▸ [0m[35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+[0m01[0m[0m:[0m[0m0008[0m[0m│[0m[0m[0m-010 [33m0x7fffffffdce0[0m[0m ◂— [0m0
+[0m02[0m[0m:[0m[0m0010[0m[0m│[0m[0m[0m-008 [33m0x7fffffffdce8[0m[0m —▸ [0m[31m0x40114d (main+23)[0m[0m ◂— [0m[38;5;148mlea[39m[38;5;15m [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0xecd[39m[38;5;15m][39m
+[0m03[0m[0m:[0m[0m0018[0m[0m│[0m[0m[0m [1mrbp[0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[0m04[0m[0m:[0m[0m0020[0m[0m│[0m[0m[0m+008 [33m0x7fffffffdcf8[0m[0m —▸ [0m[31m0x7ffff7c2a1ca (__libc_start_call_main+122)[0m[0m ◂— [0m[38;5;148mmov[39m[38;5;15m [39m[38;5;81medi[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81meax[39m
+[0m05[0m[0m:[0m[0m0028[0m[0m│[0m[0m[0m+010 [33m0x7fffffffdd00[0m[0m —▸ [0m[33m0x7fffffffdd40[0m[0m —▸ [0m[0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m06[0m[0m:[0m[0m0030[0m[0m│[0m[0m[0m+018 [33m0x7fffffffdd08[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[0m07[0m[0m:[0m[0m0038[0m[0m│[0m[0m[0m+020 [33m0x7fffffffdd10[0m[0m ◂— [0m0x100400040 /* '@' */
+[34m─────────────────────────────────────────────────────[ BACKTRACE ]──────────────────────────────────────────────────────[0m
+ ► 0   0x7ffff7fda2f4 _dl_runtime_resolve_xsavec+4
+   1         0x40114d main+23
+   2   0x7ffff7c2a1ca __libc_start_call_main+122
+   3   0x7ffff7c2a28b __libc_start_main+139
+   4         0x401075 _start+37
+[34m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[?2004l[?2004h[32m[1mpwndbg> [0m[32m[0mfinish
+[?2004lRun till exit from #0  [33m_dl_runtime_resolve_xsavec[m () at [32m../sysdeps/x86_64/dl-trampoline.h[m:76
+Resolving address of 'puts'.
+[34m0x000000000040114d[m in [33mmain[m ()
+[?2004hLEGEND: [33mSTACK[0m | [34mHEAP[0m | [31mCODE[0m | [35mDATA[0m | [4m[31mWX[0m[4m[0m | [0mRODATA[0m
+[34m─────────────────────────────────[ REGISTERS / show-flags off / show-compact-regs off ]─────────────────────────────────[0m
+[31m*[0m[31m[1mRAX [0m[31m[0m 0x1d
+ [1mRBX [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[31m*[0m[31m[1mRCX [0m[31m[0m [31m0x7ffff7d1c574 (write+20)[0m[0m ◂— [0m[38;5;148mcmp[39m[38;5;15m [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m-[39m[38;5;141m0x1000[39m /* 'H=' */
+[31m*[0m[31m[1mRDX [0m[31m[0m 0
+[31m*[0m[31m[1mRDI [0m[31m[0m [35m0x7ffff7e05710 (_IO_stdfile_1_lock)[0m[0m ◂— [0m0
+[31m*[0m[31m[1mRSI [0m[31m[0m [34m0x4052a0[0m[0m ◂— [0m"Resolving address of 'puts'.\n"
+[31m*[0m[31m[1mR8  [0m[31m[0m [35m0x7ffff7e03b20 (main_arena+96)[0m[0m —▸ [0m[34m0x4056a0[0m[0m ◂— [0m0
+[31m*[0m[31m[1mR9  [0m[31m[0m 0x410
+[31m*[0m[31m[1mR10 [0m[31m[0m 1
+[31m*[0m[31m[1mR11 [0m[31m[0m 0x202
+ [1mR12 [0m 1
+ [1mR13 [0m 0
+ [1mR14 [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR15 [0m [35m0x7ffff7ffd000 (_rtld_global)[0m[0m —▸ [0m[35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+ [1mRBP [0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[31m*[0m[31m[1mRSP [0m[31m[0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[31m*[0m[31m[1mRIP [0m[31m[0m [31m0x40114d (main+23)[0m[0m ◂— [0m[38;5;148mlea[39m[38;5;15m [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0xecd[39m[38;5;15m][39m
+[34m──────────────────────────────────────────[ DISASM / x86-64 / set emulate on ]──────────────────────────────────────────[0m
+   [0m0x401148[0m [0m<main+18> [0m   [38;5;148m[1mcall[0m[39m[38;5;15m   [39m[38;5;141m[31mputs@plt[0m[39m                    <[31mputs@plt[0m>
+ ► [1m[32m0x40114d[0m[1m[0m [1m[32m<main+23> [0m[1m[0m   [1m[32m[38;5;148mlea[39m[38;5;15m    [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0xecd[39m[38;5;15m][39m[0m[1m[0m     [31m[1mRAX[0m[31m[0m => [0m0x402021[0m[0m ◂— [0m'Get address from GOT'
+   [0m0x401154[0m [0m<main+30> [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mrdi[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrax[39m               [31m[1mRDI[0m[31m[0m => [0m0x402021[0m[0m ◂— [0m'Get address from GOT'
+   [0m0x401157[0m [0m<main+33> [0m   [38;5;148m[1mcall[0m[39m[38;5;15m   [39m[38;5;141m[31mputs@plt[0m[39m                    <[31mputs@plt[0m>
+ 
+   [0m0x40115c[0m [0m<main+38> [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81meax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;141m0[39m                 [31m[1mEAX[0m[31m[0m => 0
+   [0m0x401161[0m [0m<main+43> [0m   [38;5;148mpop[39m[38;5;15m    [39m[38;5;81mrbp[39m
+   [0m0x401162[0m [0m<main+44> [0m   [38;5;148m[1mret[0m[39m[38;5;15m    [39m
+ 
+   [0m0x401163[0m [0m          [0m   [38;5;148madd[39m[38;5;15m    [39m[38;5;81mbl[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mdh[39m
+
+[34m───────────────────────────────────────────────────────[ STACK ]────────────────────────────────────────────────────────[0m
+[0m00[0m[0m:[0m[0m0000[0m[0m│[0m[0m[0m [1mrbp rsp[0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[0m01[0m[0m:[0m[0m0008[0m[0m│[0m[0m[0m+008     [33m0x7fffffffdcf8[0m[0m —▸ [0m[31m0x7ffff7c2a1ca (__libc_start_call_main+122)[0m[0m ◂— [0m[38;5;148mmov[39m[38;5;15m [39m[38;5;81medi[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81meax[39m
+[0m02[0m[0m:[0m[0m0010[0m[0m│[0m[0m[0m+010     [33m0x7fffffffdd00[0m[0m —▸ [0m[33m0x7fffffffdd40[0m[0m —▸ [0m[0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m03[0m[0m:[0m[0m0018[0m[0m│[0m[0m[0m+018     [33m0x7fffffffdd08[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[0m04[0m[0m:[0m[0m0020[0m[0m│[0m[0m[0m+020     [33m0x7fffffffdd10[0m[0m ◂— [0m0x100400040 /* '@' */
+[0m05[0m[0m:[0m[0m0028[0m[0m│[0m[0m[0m+028     [33m0x7fffffffdd18[0m[0m —▸ [0m[31m0x401136 (main)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m06[0m[0m:[0m[0m0030[0m[0m│[0m[0m[0m+030     [33m0x7fffffffdd20[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[0m07[0m[0m:[0m[0m0038[0m[0m│[0m[0m[0m+038     [33m0x7fffffffdd28[0m[0m ◂— [0m0xb4b1f54b0e944893
+[34m─────────────────────────────────────────────────────[ BACKTRACE ]──────────────────────────────────────────────────────[0m
+ ► 0         0x40114d main+23
+   1   0x7ffff7c2a1ca __libc_start_call_main+122
+   2   0x7ffff7c2a28b __libc_start_main+139
+   3         0x401075 _start+37
+[34m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[?2004l[?2004h[32m[1mpwndbg> [0m[32m[0mgot
+[?2004lFiltering out read-only entries (display them with -r or --show-readonly)
+
+State of the GOT of [35m/home/han-go-won/dreamhack/dreamhack/study/Library/got[0m:
+GOT protection: [33mPartial RELRO[0m | Found [33m1[0m GOT entries passing the filter
+[[35m0x404000[0m] [33mputs@GLIBC_2.2.5[0m -> [31m0x7ffff7c87bd0 (puts)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[?2004h[32m[1mpwndbg> [0m[32m[0mb *main+33
+[?2004lBreakpoint 3 at [34m0x401157[m
+[?2004h[32m[1mpwndbg> [0m[32m[0mc
+[?2004lContinuing.
+
+Breakpoint 3, [34m0x0000000000401157[m in [33mmain[m ()
+[?2004hLEGEND: [33mSTACK[0m | [34mHEAP[0m | [31mCODE[0m | [35mDATA[0m | [4m[31mWX[0m[4m[0m | [0mRODATA[0m
+[34m─────────────────────────────────[ REGISTERS / show-flags off / show-compact-regs off ]─────────────────────────────────[0m
+[31m*[0m[31m[1mRAX [0m[31m[0m [0m0x402021[0m[0m ◂— [0m'Get address from GOT'
+ [1mRBX [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mRCX [0m [31m0x7ffff7d1c574 (write+20)[0m[0m ◂— [0m[38;5;148mcmp[39m[38;5;15m [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m-[39m[38;5;141m0x1000[39m /* 'H=' */
+ [1mRDX [0m 0
+[31m*[0m[31m[1mRDI [0m[31m[0m [0m0x402021[0m[0m ◂— [0m'Get address from GOT'
+ [1mRSI [0m [34m0x4052a0[0m[0m ◂— [0m"Resolving address of 'puts'.\n"
+ [1mR8  [0m [35m0x7ffff7e03b20 (main_arena+96)[0m[0m —▸ [0m[34m0x4056a0[0m[0m ◂— [0m0
+ [1mR9  [0m 0x410
+ [1mR10 [0m 1
+ [1mR11 [0m 0x202
+ [1mR12 [0m 1
+ [1mR13 [0m 0
+ [1mR14 [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR15 [0m [35m0x7ffff7ffd000 (_rtld_global)[0m[0m —▸ [0m[35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+ [1mRBP [0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+ [1mRSP [0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[31m*[0m[31m[1mRIP [0m[31m[0m [31m0x401157 (main+33)[0m[0m ◂— [0m[38;5;148mcall[39m[38;5;15m [39m[38;5;141m0x401040[39m
+[34m──────────────────────────────────────────[ DISASM / x86-64 / set emulate on ]──────────────────────────────────────────[0m
+   [0m0x401148[0m [0m<main+18> [0m   [38;5;148m[1mcall[0m[39m[38;5;15m   [39m[38;5;141m[31mputs@plt[0m[39m                    <[31mputs@plt[0m>
+   [0m0x40114d[0m [0m<main+23> [0m   [38;5;148mlea[39m[38;5;15m    [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0xecd[39m[38;5;15m][39m     [31m[1mRAX[0m[31m[0m => [0m0x402021[0m[0m ◂— [0m'Get address from GOT'
+   [0m0x401154[0m [0m<main+30> [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mrdi[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrax[39m               [31m[1mRDI[0m[31m[0m => [0m0x402021[0m[0m ◂— [0m'Get address from GOT'
+ ► [1m[32m0x401157[0m[1m[0m [1m[32m<main+33> [0m[1m[0m   [1m[32m[38;5;148m[1mcall[0m[39m[38;5;15m   [39m[38;5;141m[31mputs@plt[0m[1m[32m[39m[0m[1m[0m                    <[31mputs@plt[0m>
+        [1ms[0m: [0m0x402021[0m[0m ◂— [0m'Get address from GOT'
+ 
+   [0m0x40115c[0m [0m<main+38> [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81meax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;141m0[39m                 [31m[1mEAX[0m[31m[0m => 0
+   [0m0x401161[0m [0m<main+43> [0m   [38;5;148mpop[39m[38;5;15m    [39m[38;5;81mrbp[39m
+   [0m0x401162[0m [0m<main+44> [0m   [38;5;148m[1mret[0m[39m[38;5;15m    [39m
+ 
+   [0m0x401163[0m [0m          [0m   [38;5;148madd[39m[38;5;15m    [39m[38;5;81mbl[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mdh[39m
+[34m───────────────────────────────────────────────────────[ STACK ]────────────────────────────────────────────────────────[0m
+[0m00[0m[0m:[0m[0m0000[0m[0m│[0m[0m[0m [1mrbp rsp[0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[0m01[0m[0m:[0m[0m0008[0m[0m│[0m[0m[0m+008     [33m0x7fffffffdcf8[0m[0m —▸ [0m[31m0x7ffff7c2a1ca (__libc_start_call_main+122)[0m[0m ◂— [0m[38;5;148mmov[39m[38;5;15m [39m[38;5;81medi[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81meax[39m
+[0m02[0m[0m:[0m[0m0010[0m[0m│[0m[0m[0m+010     [33m0x7fffffffdd00[0m[0m —▸ [0m[33m0x7fffffffdd40[0m[0m —▸ [0m[0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m03[0m[0m:[0m[0m0018[0m[0m│[0m[0m[0m+018     [33m0x7fffffffdd08[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[0m04[0m[0m:[0m[0m0020[0m[0m│[0m[0m[0m+020     [33m0x7fffffffdd10[0m[0m ◂— [0m0x100400040 /* '@' */
+[0m05[0m[0m:[0m[0m0028[0m[0m│[0m[0m[0m+028     [33m0x7fffffffdd18[0m[0m —▸ [0m[31m0x401136 (main)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m06[0m[0m:[0m[0m0030[0m[0m│[0m[0m[0m+030     [33m0x7fffffffdd20[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[0m07[0m[0m:[0m[0m0038[0m[0m│[0m[0m[0m+038     [33m0x7fffffffdd28[0m[0m ◂— [0m0xb4b1f54b0e944893
+[34m─────────────────────────────────────────────────────[ BACKTRACE ]──────────────────────────────────────────────────────[0m
+ ► 0         0x401157 main+33
+   1   0x7ffff7c2a1ca __libc_start_call_main+122
+   2   0x7ffff7c2a28b __libc_start_main+139
+   3         0x401075 _start+37
+[34m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[?2004l[?2004h[32m[1mpwndbg> [0m[32m[0msi
+[?2004l[34m0x0000000000401040[m in [33mputs@plt[m ()
+[?2004hLEGEND: [33mSTACK[0m | [34mHEAP[0m | [31mCODE[0m | [35mDATA[0m | [4m[31mWX[0m[4m[0m | [0mRODATA[0m
+[34m─────────────────────────────────[ REGISTERS / show-flags off / show-compact-regs off ]─────────────────────────────────[0m
+ [1mRAX [0m [0m0x402021[0m[0m ◂— [0m'Get address from GOT'
+ [1mRBX [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mRCX [0m [31m0x7ffff7d1c574 (write+20)[0m[0m ◂— [0m[38;5;148mcmp[39m[38;5;15m [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m-[39m[38;5;141m0x1000[39m /* 'H=' */
+ [1mRDX [0m 0
+ [1mRDI [0m [0m0x402021[0m[0m ◂— [0m'Get address from GOT'
+ [1mRSI [0m [34m0x4052a0[0m[0m ◂— [0m"Resolving address of 'puts'.\n"
+ [1mR8  [0m [35m0x7ffff7e03b20 (main_arena+96)[0m[0m —▸ [0m[34m0x4056a0[0m[0m ◂— [0m0
+ [1mR9  [0m 0x410
+ [1mR10 [0m 1
+ [1mR11 [0m 0x202
+ [1mR12 [0m 1
+ [1mR13 [0m 0
+ [1mR14 [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR15 [0m [35m0x7ffff7ffd000 (_rtld_global)[0m[0m —▸ [0m[35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+ [1mRBP [0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[31m*[0m[31m[1mRSP [0m[31m[0m [33m0x7fffffffdce8[0m[0m —▸ [0m[31m0x40115c (main+38)[0m[0m ◂— [0m[38;5;148mmov[39m[38;5;15m [39m[38;5;81meax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;141m0[39m
+[31m*[0m[31m[1mRIP [0m[31m[0m [31m0x401040 (puts@plt)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[34m──────────────────────────────────────────[ DISASM / x86-64 / set emulate on ]──────────────────────────────────────────[0m
+ ► [1m[32m0x401040      [0m[1m[0m [1m[32m<puts@plt>   [0m[1m[0m   [1m[32m[38;5;148mendbr64[39m[38;5;15m [39m[0m[1m[0m
+   [0m0x401044      [0m [0m<puts@plt+4> [0m   [38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fb6[39m[38;5;15m][39m    <[31mputs[0m>
+[0m    ↓[0m
+   [0m0x7ffff7c87bd0[0m [0m<puts>       [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+   [0m0x7ffff7c87bd4[0m [0m<puts+4>     [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mrbp[39m
+   [0m0x7ffff7c87bd5[0m [0m<puts+5>     [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mrbp[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrsp[39m     [31m[1mRBP[0m[31m[0m => [33m0x7fffffffdce0[0m[0m —▸ [0m[33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m[0m...[0m
+   [0m0x7ffff7c87bd8[0m [0m<puts+8>     [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mr15[39m
+   [0m0x7ffff7c87bda[0m [0m<puts+10>    [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mr14[39m
+   [0m0x7ffff7c87bdc[0m [0m<puts+12>    [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mr13[39m
+   [0m0x7ffff7c87bde[0m [0m<puts+14>    [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mr12[39m
+   [0m0x7ffff7c87be0[0m [0m<puts+16>    [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mr12[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrdi[39m     [31m[1mR12[0m[31m[0m => [0m0x402021[0m[0m ◂— [0m'Get address from GOT'
+   [0m0x7ffff7c87be3[0m [0m<puts+19>    [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mrbx[39m
+[34m───────────────────────────────────────────────────────[ STACK ]────────────────────────────────────────────────────────[0m
+[0m00[0m[0m:[0m[0m0000[0m[0m│[0m[0m[0m [1mrsp[0m [33m0x7fffffffdce8[0m[0m —▸ [0m[31m0x40115c (main+38)[0m[0m ◂— [0m[38;5;148mmov[39m[38;5;15m [39m[38;5;81meax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;141m0[39m
+[0m01[0m[0m:[0m[0m0008[0m[0m│[0m[0m[0m [1mrbp[0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[0m02[0m[0m:[0m[0m0010[0m[0m│[0m[0m[0m+008 [33m0x7fffffffdcf8[0m[0m —▸ [0m[31m0x7ffff7c2a1ca (__libc_start_call_main+122)[0m[0m ◂— [0m[38;5;148mmov[39m[38;5;15m [39m[38;5;81medi[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81meax[39m
+[0m03[0m[0m:[0m[0m0018[0m[0m│[0m[0m[0m+010 [33m0x7fffffffdd00[0m[0m —▸ [0m[33m0x7fffffffdd40[0m[0m —▸ [0m[0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m04[0m[0m:[0m[0m0020[0m[0m│[0m[0m[0m+018 [33m0x7fffffffdd08[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[0m05[0m[0m:[0m[0m0028[0m[0m│[0m[0m[0m+020 [33m0x7fffffffdd10[0m[0m ◂— [0m0x100400040 /* '@' */
+[0m06[0m[0m:[0m[0m0030[0m[0m│[0m[0m[0m+028 [33m0x7fffffffdd18[0m[0m —▸ [0m[31m0x401136 (main)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m07[0m[0m:[0m[0m0038[0m[0m│[0m[0m[0m+030 [33m0x7fffffffdd20[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[34m─────────────────────────────────────────────────────[ BACKTRACE ]──────────────────────────────────────────────────────[0m
+ ► 0         0x401040 puts@plt
+   1         0x40115c main+38
+   2   0x7ffff7c2a1ca __libc_start_call_main+122
+   3   0x7ffff7c2a28b __libc_start_main+139
+   4         0x401075 _start+37
+[34m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[?2004l[?2004h[32m[1mpwndbg> [0m[32m[0msi
+[?2004l[34m0x0000000000401044[m in [33mputs@plt[m ()
+[?2004hLEGEND: [33mSTACK[0m | [34mHEAP[0m | [31mCODE[0m | [35mDATA[0m | [4m[31mWX[0m[4m[0m | [0mRODATA[0m
+[34m─────────────────────────────────[ REGISTERS / show-flags off / show-compact-regs off ]─────────────────────────────────[0m
+ [1mRAX [0m [0m0x402021[0m[0m ◂— [0m'Get address from GOT'
+ [1mRBX [0m [33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+ [1mRCX [0m [31m0x7ffff7d1c574 (write+20)[0m[0m ◂— [0m[38;5;148mcmp[39m[38;5;15m [39m[38;5;81mrax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;15m-[39m[38;5;141m0x1000[39m /* 'H=' */
+ [1mRDX [0m 0
+ [1mRDI [0m [0m0x402021[0m[0m ◂— [0m'Get address from GOT'
+ [1mRSI [0m [34m0x4052a0[0m[0m ◂— [0m"Resolving address of 'puts'.\n"
+ [1mR8  [0m [35m0x7ffff7e03b20 (main_arena+96)[0m[0m —▸ [0m[34m0x4056a0[0m[0m ◂— [0m0
+ [1mR9  [0m 0x410
+ [1mR10 [0m 1
+ [1mR11 [0m 0x202
+ [1mR12 [0m 1
+ [1mR13 [0m 0
+ [1mR14 [0m [0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+ [1mR15 [0m [35m0x7ffff7ffd000 (_rtld_global)[0m[0m —▸ [0m[35m0x7ffff7ffe2e0[0m[0m ◂— [0m0
+ [1mRBP [0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+ [1mRSP [0m [33m0x7fffffffdce8[0m[0m —▸ [0m[31m0x40115c (main+38)[0m[0m ◂— [0m[38;5;148mmov[39m[38;5;15m [39m[38;5;81meax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;141m0[39m
+[31m*[0m[31m[1mRIP [0m[31m[0m [31m0x401044 (puts@plt+4)[0m[0m ◂— [0m[38;5;148mjmp[39m[38;5;15m [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fb6[39m[38;5;15m][39m
+[34m──────────────────────────────────────────[ DISASM / x86-64 / set emulate on ]──────────────────────────────────────────[0m
+   [0m0x401040      [0m [0m<puts@plt>   [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+ ► [1m[32m0x401044      [0m[1m[0m [1m[32m<puts@plt+4> [0m[1m[0m   [1m[32m[38;5;148m[1mjmp[0m[39m[38;5;15m    [39m[38;5;81mqword[39m[38;5;15m [39m[38;5;81mptr[39m[38;5;15m [39m[38;5;15m[[39m[38;5;81mrip[39m[38;5;15m [39m[38;5;15m+[39m[38;5;15m [39m[38;5;141m0x2fb6[39m[38;5;15m][39m[0m[1m[0m    <[31mputs[0m>
+[0m    ↓[0m
+   [0m0x7ffff7c87bd0[0m [0m<puts>       [0m   [38;5;148mendbr64[39m[38;5;15m [39m
+   [0m0x7ffff7c87bd4[0m [0m<puts+4>     [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mrbp[39m
+   [0m0x7ffff7c87bd5[0m [0m<puts+5>     [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mrbp[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrsp[39m     [31m[1mRBP[0m[31m[0m => [33m0x7fffffffdce0[0m[0m —▸ [0m[33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m[0m...[0m
+   [0m0x7ffff7c87bd8[0m [0m<puts+8>     [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mr15[39m
+   [0m0x7ffff7c87bda[0m [0m<puts+10>    [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mr14[39m
+   [0m0x7ffff7c87bdc[0m [0m<puts+12>    [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mr13[39m
+   [0m0x7ffff7c87bde[0m [0m<puts+14>    [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mr12[39m
+   [0m0x7ffff7c87be0[0m [0m<puts+16>    [0m   [38;5;148mmov[39m[38;5;15m    [39m[38;5;81mr12[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81mrdi[39m     [31m[1mR12[0m[31m[0m => [0m0x402021[0m[0m ◂— [0m'Get address from GOT'
+   [0m0x7ffff7c87be3[0m [0m<puts+19>    [0m   [38;5;148mpush[39m[38;5;15m   [39m[38;5;81mrbx[39m
+[34m───────────────────────────────────────────────────────[ STACK ]────────────────────────────────────────────────────────[0m
+[0m00[0m[0m:[0m[0m0000[0m[0m│[0m[0m[0m [1mrsp[0m [33m0x7fffffffdce8[0m[0m —▸ [0m[31m0x40115c (main+38)[0m[0m ◂— [0m[38;5;148mmov[39m[38;5;15m [39m[38;5;81meax[39m[38;5;15m,[39m[38;5;15m [39m[38;5;141m0[39m
+[0m01[0m[0m:[0m[0m0008[0m[0m│[0m[0m[0m [1mrbp[0m [33m0x7fffffffdcf0[0m[0m —▸ [0m[33m0x7fffffffdd90[0m[0m —▸ [0m[33m0x7fffffffddf0[0m[0m ◂— [0m0
+[0m02[0m[0m:[0m[0m0010[0m[0m│[0m[0m[0m+008 [33m0x7fffffffdcf8[0m[0m —▸ [0m[31m0x7ffff7c2a1ca (__libc_start_call_main+122)[0m[0m ◂— [0m[38;5;148mmov[39m[38;5;15m [39m[38;5;81medi[39m[38;5;15m,[39m[38;5;15m [39m[38;5;81meax[39m
+[0m03[0m[0m:[0m[0m0018[0m[0m│[0m[0m[0m+010 [33m0x7fffffffdd00[0m[0m —▸ [0m[33m0x7fffffffdd40[0m[0m —▸ [0m[0m0x403e00 (__do_global_dtors_aux_fini_array_entry)[0m[0m —▸ [0m[31m0x401100 (__do_global_dtors_aux)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m04[0m[0m:[0m[0m0020[0m[0m│[0m[0m[0m+018 [33m0x7fffffffdd08[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[0m05[0m[0m:[0m[0m0028[0m[0m│[0m[0m[0m+020 [33m0x7fffffffdd10[0m[0m ◂— [0m0x100400040 /* '@' */
+[0m06[0m[0m:[0m[0m0030[0m[0m│[0m[0m[0m+028 [33m0x7fffffffdd18[0m[0m —▸ [0m[31m0x401136 (main)[0m[0m ◂— [0m[38;5;148mendbr64[39m[38;5;15m [39m
+[0m07[0m[0m:[0m[0m0038[0m[0m│[0m[0m[0m+030 [33m0x7fffffffdd20[0m[0m —▸ [0m[33m0x7fffffffde18[0m[0m —▸ [0m[33m0x7fffffffe15b[0m[0m ◂— [0m'/home/han-go-won/dreamhack/dreamhack/study/Library/got'
+[34m─────────────────────────────────────────────────────[ BACKTRACE ]──────────────────────────────────────────────────────[0m
+ ► 0         0x401044 puts@plt+4
+   1         0x40115c main+38
+   2   0x7ffff7c2a1ca __libc_start_call_main+122
+   3   0x7ffff7c2a28b __libc_start_main+139
+   4         0x401075 _start+37
+[34m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+[?2004l[?2004h[32m[1mpwndbg> [0m[32m[0mq
+[?2004l[?2004h]0;han-go-won@han-go-won-VMware-Virtual-Platform: ~/dreamhack/dreamhack/study/Library[01;32mhan-go-won@han-go-won-VMware-Virtual-Platform[00m:[01;34m~/dreamhack/dreamhack/study/Library[00m$ exit
+[?2004lexit
+
+Script done on 2024-09-01 20:07:45+09:00 [COMMAND_EXIT_CODE="0"]
